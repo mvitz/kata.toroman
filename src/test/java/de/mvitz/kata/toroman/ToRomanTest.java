@@ -54,4 +54,11 @@ public class ToRomanTest {
         assertThat(romanDigits).containsExactly("I", "V");
     }
 
+    @Test
+    public void shouldCompileRomanDigits() {
+        final ToRoman sut = new ToRoman();
+        final String romanNumber = sut.compile(Arrays.asList("X", "IV"));
+        assertThat(romanNumber).isEqualTo("XIV");
+    }
+
 }

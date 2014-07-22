@@ -3,6 +3,7 @@ package de.mvitz.kata.toroman;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public final class ToRoman {
@@ -35,8 +36,8 @@ public final class ToRoman {
         return factors.stream().map(arabicToRoman::get).collect(Collectors.toList());
     }
 
-    private String compile(Collection<String> romanDigits) {
-        throw new UnsupportedOperationException("Not implemented!");
+    String compile(Collection<String> romanDigits) {
+        return String.join("", romanDigits);
     }
 
 }
