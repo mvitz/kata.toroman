@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static junitparams.JUnitParamsRunner.$;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
@@ -61,4 +62,20 @@ public class ToRomanTest {
         assertThat(romanNumber).isEqualTo("XIV");
     }
 
+    @Test
+    @Parameters(method = "factors")
+    public void shouldFindFactors(String description, int arabicNumber, Integer[] expectedFactors) {
+        final ToRoman sut = new ToRoman();
+        final Collection<Integer> factors = sut.findFactors(arabicNumber);
+        assertThat(factors).describedAs(description).containsExactly(expectedFactors);
+    }
+
+    private Object[] factors() {
+        return $(
+                $("single factor",           1000, new Integer[] { 1000       }),
+                $("consecutive factors",     1900, new Integer[] { 1000,  900 }),
+                $("same factor",             2000, new Integer[] { 1000, 1000 }),
+                $("non-consecutive factors", 1400, new Integer[] { 1000,  400 })
+        );
+    }
 }

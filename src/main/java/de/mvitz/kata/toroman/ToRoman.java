@@ -1,9 +1,6 @@
 package de.mvitz.kata.toroman;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public final class ToRoman {
@@ -14,7 +11,13 @@ public final class ToRoman {
         return compile(romanDigits);
     }
 
-    private Collection<Integer> findFactors(int arabicNumber) {
+    Collection<Integer> findFactors(int arabicNumber) {
+        final Collection<Integer> factors = Arrays.asList(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1);
+        final int factor = findFactor(arabicNumber, factors);
+        return Arrays.asList(factor);
+    }
+
+    private int findFactor(int arabicNumber, Collection<Integer> factors) {
         throw new UnsupportedOperationException("Not implemented!");
     }
 
