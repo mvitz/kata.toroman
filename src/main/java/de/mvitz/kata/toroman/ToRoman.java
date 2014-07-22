@@ -1,9 +1,9 @@
 package de.mvitz.kata.toroman;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public final class ToRoman {
 
@@ -32,7 +32,7 @@ public final class ToRoman {
         arabicToRoman.put(900, "CM");
         arabicToRoman.put(1000, "M");
 
-        return Arrays.asList(arabicToRoman.get(factors.iterator().next()));
+        return factors.stream().map(arabicToRoman::get).collect(Collectors.toList());
     }
 
     private String compile(Collection<String> romanDigits) {

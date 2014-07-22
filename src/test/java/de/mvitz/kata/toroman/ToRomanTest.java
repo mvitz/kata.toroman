@@ -47,4 +47,11 @@ public class ToRomanTest {
         assertThat(romanDigits).containsExactly(expectedRomanDigit);
     }
 
+    @Test
+    public void shouldTranslateMultipleFactors() {
+        final ToRoman sut = new ToRoman();
+        final Collection<String> romanDigits = sut.translate(Arrays.asList(1, 5));
+        assertThat(romanDigits).containsExactly("I", "V");
+    }
+
 }
