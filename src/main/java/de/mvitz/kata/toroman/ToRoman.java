@@ -1,6 +1,9 @@
 package de.mvitz.kata.toroman;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class ToRoman {
 
@@ -14,8 +17,22 @@ public final class ToRoman {
         throw new UnsupportedOperationException("Not implemented!");
     }
 
-    private Collection<String> translate(Collection<Integer> factors) {
-        throw new UnsupportedOperationException("Not implemented!");
+    Collection<String> translate(Collection<Integer> factors) {
+        final Map<Integer, String> arabicToRoman = new HashMap<>();
+        arabicToRoman.put(1, "I");
+        arabicToRoman.put(4, "IV");
+        arabicToRoman.put(5, "V");
+        arabicToRoman.put(9, "IX");
+        arabicToRoman.put(10, "X");
+        arabicToRoman.put(40, "XL");
+        arabicToRoman.put(50, "L");
+        arabicToRoman.put(90, "XC");
+        arabicToRoman.put(400, "CD");
+        arabicToRoman.put(500, "D");
+        arabicToRoman.put(900, "CM");
+        arabicToRoman.put(1000, "M");
+
+        return Arrays.asList(arabicToRoman.get(factors.iterator().next()));
     }
 
     private String compile(Collection<String> romanDigits) {

@@ -5,6 +5,9 @@ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
@@ -21,6 +24,27 @@ public class ToRomanTest {
         final ToRoman sut = new ToRoman();
         final String result = sut.convert(arabicNumber);
         assertThat(result).isEqualTo(expectedRomanNumber);
+    }
+
+    @Test
+    @Parameters({
+            "1, I",
+            "4, IV",
+            "5, V",
+            "9, IX",
+            "10, X",
+            "40, XL",
+            "50, L",
+            "90, XC",
+            "400, CD",
+            "500, D",
+            "900, CM",
+            "1000, M"
+    })
+    public void shouldTranslateSingleFactor(int factor, String expectedRomanDigit) {
+        final ToRoman sut = new ToRoman();
+        final Collection<String> romanDigits = sut.translate(Arrays.asList(factor));
+        assertThat(romanDigits).containsExactly(expectedRomanDigit);
     }
 
 }
