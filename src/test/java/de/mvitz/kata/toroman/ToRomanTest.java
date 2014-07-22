@@ -78,4 +78,20 @@ public class ToRomanTest {
                 $("non-consecutive factors", 1400, new Integer[] { 1000,  400 })
         );
     }
+
+    @Test
+    @Parameters(method = "factor")
+    public void shouldFindFactor(int arabicNumber, Collection<Integer> factors, int expectedFactor) {
+        final ToRoman sut = new ToRoman();
+        final int factor = sut.findFactor(arabicNumber, factors);
+        assertThat(factor).isEqualTo(expectedFactor);
+    }
+
+    private Object[] factor() {
+        return $(
+                $(11, Arrays.asList(10, 5), 10),
+                $( 9, Arrays.asList(10, 5),  5)
+        );
+    }
+
 }

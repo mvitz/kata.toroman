@@ -17,8 +17,8 @@ public final class ToRoman {
         return Arrays.asList(factor);
     }
 
-    private int findFactor(int arabicNumber, Collection<Integer> factors) {
-        throw new UnsupportedOperationException("Not implemented!");
+    int findFactor(int arabicNumber, Collection<Integer> factors) {
+        return factors.stream().filter(f -> f <= arabicNumber).findFirst().get();
     }
 
     Collection<String> translate(Collection<Integer> factors) {
