@@ -12,9 +12,14 @@ public final class ToRoman {
     }
 
     Collection<Integer> findFactors(int arabicNumber) {
-        final Collection<Integer> factors = Arrays.asList(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1);
-        final int factor = findFactor(arabicNumber, factors);
-        return Arrays.asList(factor);
+        final Collection<Integer> possibleFactors = Arrays.asList(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1);
+        final Collection<Integer> factors = new ArrayList<>();
+        while (arabicNumber > 0) {
+            final int factor = findFactor(arabicNumber, possibleFactors);
+            factors.add(factor);
+            arabicNumber -= factor;
+        }
+        return factors;
     }
 
     int findFactor(int arabicNumber, Collection<Integer> factors) {
