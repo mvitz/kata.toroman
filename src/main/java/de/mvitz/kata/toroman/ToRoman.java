@@ -28,7 +28,7 @@ public final class ToRoman {
         return compile(romanDigits);
     }
 
-    Collection<Integer> findFactors(int arabicNumber) {
+    private Collection<Integer> findFactors(int arabicNumber) {
         final Collection<Integer> possibleFactors = map.keySet().stream().sorted(Comparator.<Integer>reverseOrder()).collect(Collectors.toList());
 
         final Collection<Integer> factors = new ArrayList<>();
@@ -40,15 +40,15 @@ public final class ToRoman {
         return factors;
     }
 
-    int findFactor(int arabicNumber, Collection<Integer> factors) {
+    private int findFactor(int arabicNumber, Collection<Integer> factors) {
         return factors.stream().filter(f -> f <= arabicNumber).findFirst().get();
     }
 
-    Collection<String> translate(Collection<Integer> factors) {
+    private Collection<String> translate(Collection<Integer> factors) {
         return factors.stream().map(map::get).collect(Collectors.toList());
     }
 
-    String compile(Collection<String> romanDigits) {
+    private String compile(Collection<String> romanDigits) {
         return String.join("", romanDigits);
     }
 
